@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<Valute ID="R01060">
+    <NumCode>051</NumCode>
+    <CharCode>AMD</CharCode>
+    <Nominal>100</Nominal>
+    <Name>Армянских драмов</Name>
+    <Value>11,5741</Value>
+</Valute>
