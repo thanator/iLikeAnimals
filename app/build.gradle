@@ -22,6 +22,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
 }
 
 dependencies {
@@ -35,23 +42,4 @@ dependencies {
     compile "com.android.support:design:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
     compile "com.android.support:percent:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
     compile "com.android.support:palette-v7:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
-
-    // jackson pack
-    compile 'com.fasterxml.jackson.core:jackson-core:2.8.5'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.5'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.5'
-
-    //----------TESTS----------//
-    // For local tests
-    testCompile "junit:junit:${project.JUNIT_VERSION}"
-    testCompile "org.mockito:mockito-core:${project.MOCKITO_CORE_VERSION}"
-    testCompile "org.hamcrest:hamcrest-library:${project.HAMCREST_VERSION}"
-    // For instrumented tests
-    androidTestCompile "junit:junit:${project.JUNIT_VERSION}"
-    androidTestCompile "org.hamcrest:hamcrest-library:${project.HAMCREST_VERSION}"
-    androidTestCompile "com.android.support.test:runner:${project.ANDROID_SUPPORT_TEST_RUNNER_VERSION}"
-    androidTestCompile "com.android.support.test:rules:${project.ANDROID_SUPPORT_TEST_RUNNER_VERSION}"
-    androidTestCompile "com.android.support:support-annotations:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
-    androidTestCompile "com.android.support.test.espresso:espresso-core:${project.ANDROID_ESPRESSO_VERSION}"
-
 }

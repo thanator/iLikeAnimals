@@ -1,6 +1,5 @@
 package ru.sberbank.mobile.core.bean.operation;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
 
 import org.simpleframework.xml.Transient;
@@ -25,17 +24,14 @@ public abstract class ServerEntity extends StatusedEntity {
         mConnectorStatus = ConnectorStatus.SUCCESS;
     }
 
-    @JsonIgnore
     public final ConnectorStatus getConnectorStatus() {
         return mConnectorStatus;
     }
 
-    @JsonIgnore
     public final void setConnectorStatus(ConnectorStatus connectorStatus) {
         mConnectorStatus = connectorStatus;
     }
 
-    @JsonIgnore
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -51,13 +47,11 @@ public abstract class ServerEntity extends StatusedEntity {
         return mConnectorStatus == that.mConnectorStatus;
     }
 
-    @JsonIgnore
     @Override
     public int hashCode() {
         return Objects.hashCode(super.hashCode(), mConnectorStatus);
     }
 
-    @JsonIgnore
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
