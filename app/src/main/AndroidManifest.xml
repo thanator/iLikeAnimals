@@ -19,6 +19,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="ru.sberbank.mobile.common.animal.AddAnimalActivity" />
+
     </application>
 
 </manifest>
