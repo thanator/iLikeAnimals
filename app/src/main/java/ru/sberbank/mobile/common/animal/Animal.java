@@ -2,11 +2,14 @@ package ru.sberbank.mobile.common.animal;
 
 import com.google.common.base.Objects;
 
+import java.io.Serializable;
+
 /**
  * @author QuickNick
  */
-public class Animal {
+public class Animal implements Serializable {
 
+    private long mId;
     private String mSpecies;
     private int mAge;
     private String mName;
@@ -30,23 +33,33 @@ public class Animal {
             return false;
         }
         Animal animal = (Animal) o;
-        return mAge == animal.mAge &&
+        return mId == animal.mId &&
+                mAge == animal.mAge &&
                 Objects.equal(mSpecies, animal.mSpecies) &&
                 Objects.equal(mName, animal.mName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(mSpecies, mAge, mName);
+        return Objects.hashCode(mId, mSpecies, mAge, mName);
     }
 
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
+                .add("mId", mId)
                 .add("mSpecies", mSpecies)
                 .add("mAge", mAge)
                 .add("mName", mName)
                 .toString();
+    }
+
+    public long getId() {
+        return mId;
+    }
+
+    public void setId(long id) {
+        mId = id;
     }
 
     public String getSpecies() {

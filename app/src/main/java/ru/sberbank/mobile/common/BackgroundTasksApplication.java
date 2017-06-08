@@ -4,6 +4,8 @@ import android.app.Application;
 
 import ru.sberbank.mobile.common.animal.AnimalsStorage;
 import ru.sberbank.mobile.common.animal.AnimalsStorageProvider;
+import ru.sberbank.mobile.common.animal.db.AnimalsDao;
+import ru.sberbank.mobile.common.animal.db.SQLiteAnimalsDao;
 
 /**
  * @author QuickNick.
@@ -16,7 +18,8 @@ public class BackgroundTasksApplication extends Application implements AnimalsSt
     @Override
     public void onCreate() {
         super.onCreate();
-        mAnimalsStorage = new AnimalsStorage();
+        AnimalsDao animalsDao = new SQLiteAnimalsDao(this);
+        mAnimalsStorage = new AnimalsStorage(animalsDao);
     }
 
     @Override
