@@ -6,7 +6,7 @@ import android.support.v4.content.AsyncTaskLoader;
 import java.util.List;
 
 /**
- * @author QuickNick.
+ * @author not QuickNick.
  */
 
 public class AnimalsLoader extends AsyncTaskLoader<List<Animal>> implements AnimalsStorage.OnContentChangeListener {

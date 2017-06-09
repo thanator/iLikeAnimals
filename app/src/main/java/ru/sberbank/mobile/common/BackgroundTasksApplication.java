@@ -8,7 +8,7 @@ import ru.sberbank.mobile.common.animal.db.AnimalsDao;
 import ru.sberbank.mobile.common.animal.db.SQLiteAnimalsDao;
 
 /**
- * @author QuickNick.
+ * @author not QuickNick.
  */
 
 public class BackgroundTasksApplication extends Application implements AnimalsStorageProvider {

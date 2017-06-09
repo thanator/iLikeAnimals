@@ -17,7 +17,7 @@ import android.widget.EditText;
 import ru.sberbank.backgroundtaskssample.R;
 
 /**
- * @author QuickNick.
+ * @author not QuickNick.
  */
 
 public class AddAnimalActivity extends AppCompatActivity {

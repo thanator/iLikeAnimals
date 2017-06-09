@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">BackgroundTasksSample</string>
+    <string name="delete_animal">Удалить животное</string>
+    <string name="redact_animal">Редактировать животное</string>
+    <string name="let_s_update">Let\'s update!</string>
+    <string name="hint_upd">Type number here</string>
+    <string name="oky">OK</string>
+    <string name="what_do_you_want">Чего желаете?</string>
+    <string name="annihilate">Аннигилировать!</string>
+    <string name="update">Генно модифицировать!</string>
+    <string name="okey">Okey</string>
+    <string name="nope">Cancel</string>
+    <string name="chosing_one_menu">Выбрать подопытного</string>
 </resources>

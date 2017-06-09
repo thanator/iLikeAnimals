@@ -5,7 +5,7 @@ import com.google.common.base.Objects;
 import java.io.Serializable;
 
 /**
- * @author QuickNick
+ * @author not QuickNick
  */
 public class Animal implements Serializable {
 

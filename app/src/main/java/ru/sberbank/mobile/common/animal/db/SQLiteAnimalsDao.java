@@ -52,6 +52,31 @@ public class SQLiteAnimalsDao extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
+
+    @Override
+    public int updateAnimal(Animal animal) {
+        int willItEverReturnToSomething = -1;
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            ContentValues values = createValuesFromAnimal(animal);
+            willItEverReturnToSomething = db.update(TABLE_NAME, values, AnimalsContract.Animals._ID + " = ?", new String[]{String.valueOf(animal.getId())});
+            db.setTransactionSuccessful();
+        }finally {
+            db.endTransaction();
+            db.close();
+        }
+        return willItEverReturnToSomething;
+    }
+
+    @Override
+    public int deleteAnimal(Animal animal) {
+        throw new UnsupportedOperationException(
+                "Not implemented yet"
+        );
+    }
+
     @Override
     public long insertAnimal(Animal animal) {
         long id = NO_ID;
@@ -92,24 +117,15 @@ public class SQLiteAnimalsDao extends SQLiteOpenHelper
 
     @Override
     public Animal getAnimalById(long id) {
+
+        SQLiteDatabase db = getReadableDatabase();
+
+
         throw new UnsupportedOperationException(
                 "Not implemented yet"
         );
     }
 
-    @Override
-    public int updateAnimal(Animal animal) {
-        throw new UnsupportedOperationException(
-                "Not implemented yet"
-        );
-    }
-
-    @Override
-    public int deleteAnimal(Animal animal) {
-        throw new UnsupportedOperationException(
-                "Not implemented yet"
-        );
-    }
 
     private static Animal createAnimal(Cursor cursor) {
         Animal animal = new Animal();

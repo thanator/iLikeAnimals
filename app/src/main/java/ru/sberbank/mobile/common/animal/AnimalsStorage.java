@@ -16,7 +16,7 @@ import java.util.List;
 import ru.sberbank.mobile.common.animal.db.AnimalsDao;
 
 /**
- * @author QuickNick
+ * @author not QuickNick
  */
 public class AnimalsStorage {
 
@@ -24,6 +24,10 @@ public class AnimalsStorage {
 
     private final AnimalsDao mAnimalsDao;
     private final List<OnContentChangeListener> mOnContentChangeListeners;
+
+    public int getAnimalsCount(){
+        return mAnimalsDao.getAnimals().size();
+    }
 
     public AnimalsStorage(AnimalsDao animalsDao) {
         mAnimalsDao = animalsDao;

@@ -2,6 +2,7 @@ package ru.sberbank.mobile.common.animal;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,7 @@ import java.util.List;
 import ru.sberbank.backgroundtaskssample.R;
 
 /**
- * @author QuickNick
+ * @author not QuickNick
  */
 public class AnimalsActivity extends AppCompatActivity {
 
@@ -51,6 +52,14 @@ public class AnimalsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.add_animal_menu_item: {
                 startActivity(AddAnimalActivity.newIntent(this));
+                break;
+            }
+            case R.id.chosing_one: {
+                DialogFragment newFragment = new AnimalChoosing();
+                Bundle args = new Bundle();
+                args.putInt("count", mAnimalsStorage.getAnimalsCount());
+                newFragment.setArguments(args);
+                newFragment.show(getSupportFragmentManager(), "Choosing");
                 break;
             }
             default: {

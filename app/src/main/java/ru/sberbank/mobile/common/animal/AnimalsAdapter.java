@@ -13,7 +13,7 @@ import java.util.List;
 import ru.sberbank.backgroundtaskssample.R;
 
 /**
- * @author QuickNick
+ * @author not QuickNick
  */
 public class AnimalsAdapter extends BaseAdapter {
 

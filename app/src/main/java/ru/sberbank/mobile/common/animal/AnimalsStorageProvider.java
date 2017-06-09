@@ -1,7 +1,7 @@
 package ru.sberbank.mobile.common.animal;
 
 /**
- * @author QuickNick.
+ * @author not QuickNick.
  */
 
 public interface AnimalsStorageProvider {
