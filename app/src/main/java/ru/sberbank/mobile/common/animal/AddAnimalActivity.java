@@ -32,6 +32,8 @@ public class AddAnimalActivity extends AppCompatActivity {
     private EditText mNameEditText;
     private Button mAddButton;
     private EditText[] mEditTexts;
+    private int mType;
+    private int mVictim;
 
     public static Intent newIntent(Context context) {
         Intent intent = new Intent(context, AddAnimalActivity.class);
@@ -41,6 +43,11 @@ public class AddAnimalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        mType = intent.getIntExtra("type", 0);
+        mVictim = intent.getIntExtra("victim", -1);
+
         AnimalsStorageProvider provider = (AnimalsStorageProvider) getApplication();
         mAnimalsStorage = provider.getAnimalsStorage();
 
@@ -71,7 +78,10 @@ public class AddAnimalActivity extends AppCompatActivity {
         int age = Integer.valueOf(mAgeEditText.getText().toString());
         String name = mNameEditText.getText().toString();
         Animal animal = new Animal(species, age, name);
-        mAnimalsStorage.addAnimal(animal);
+        if (mType == 1)
+            mAnimalsStorage.updateAnimal(mVictim, animal);
+        else
+            mAnimalsStorage.addAnimal(animal);
         finish();
     }
 

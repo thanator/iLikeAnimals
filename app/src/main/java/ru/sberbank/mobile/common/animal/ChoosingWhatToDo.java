@@ -51,7 +51,8 @@ public class ChoosingWhatToDo extends DialogFragment {
                             mAnimalsStorage.deleteAnimal(mVictim);
 
                         }else if (mRadio2.isChecked()){
-                            mAnimalsStorage.updateAnimal(mVictim);
+                            startActivity(AddAnimalActivity.newIntent(getContext()).putExtra("victim", mVictim).putExtra("type", 1));
+                            //mAnimalsStorage.updateAnimal(mVictim);
                         }
 
                     }

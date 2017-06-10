@@ -72,22 +72,6 @@ public class SQLiteAnimalsDao extends SQLiteOpenHelper
         return animal;
     }
 
-    @Override
-    public int updateAnimal(Animal animal) {
-        int willItEverReturnToSomething = -1;
-
-        SQLiteDatabase db = getWritableDatabase();
-        db.beginTransaction();
-        try {
-            ContentValues values = createValuesFromAnimal(animal);
-            willItEverReturnToSomething = db.update(TABLE_NAME, values, AnimalsContract.Animals._ID + " = ?", new String[]{String.valueOf(animal.getId())});
-            db.setTransactionSuccessful();
-        }finally {
-            db.endTransaction();
-            db.close();
-        }
-        return willItEverReturnToSomething;
-    }
 
     @Override
     public int deleteAnimal(Animal animal) {
@@ -145,6 +129,22 @@ public class SQLiteAnimalsDao extends SQLiteOpenHelper
         return animals;
     }
 
+    @Override
+    public int updateAnimal(Animal animal, Animal newAnimal) {
+        int willItEverReturnToSomething = -1;
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            ContentValues values = createValuesFromAnimal(newAnimal);
+            willItEverReturnToSomething = db.update(TABLE_NAME, values, AnimalsContract.Animals._ID + " = ?", new String[]{String.valueOf(animal.getId())});
+            db.setTransactionSuccessful();
+        }finally {
+            db.endTransaction();
+            db.close();
+        }
+        return willItEverReturnToSomething;
+    }
 
 
 

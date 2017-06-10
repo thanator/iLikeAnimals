@@ -47,9 +47,9 @@ public class AnimalsStorage {
     }
 
 
-    public void updateAnimal(long id){
+    public void updateAnimal(long id, Animal newAnimal){
         Animal animal = mAnimalsDao.getAnimalById(id);
-        mAnimalsDao.updateAnimal(animal);
+        mAnimalsDao.updateAnimal(animal, newAnimal);
         for (OnContentChangeListener listener : mOnContentChangeListeners) {
             listener.onAnimalAdded(this, animal);
         }

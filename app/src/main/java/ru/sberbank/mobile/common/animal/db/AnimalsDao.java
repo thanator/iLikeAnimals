@@ -15,7 +15,7 @@ public interface AnimalsDao {
 
     Animal getAnimalById(long id);
 
-    int updateAnimal(Animal animal);
+    int updateAnimal(Animal animal, Animal newAnimal);
 
     int deleteAnimal(Animal animal);
 }
