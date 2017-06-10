@@ -20,7 +20,7 @@ import ru.sberbank.backgroundtaskssample.R;
  * @author not QuickNick.
  */
 
-public class AddAnimalActivity extends AppCompatActivity {
+public class DoSomeThingWithAnimalActivity extends AppCompatActivity {
 
     private AnimalsStorage mAnimalsStorage;
 
@@ -36,7 +36,7 @@ public class AddAnimalActivity extends AppCompatActivity {
     private int mVictim;
 
     public static Intent newIntent(Context context) {
-        Intent intent = new Intent(context, AddAnimalActivity.class);
+        Intent intent = new Intent(context, DoSomeThingWithAnimalActivity.class);
         return intent;
     }
 
@@ -45,8 +45,8 @@ public class AddAnimalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        mType = intent.getIntExtra("type", 0);
-        mVictim = intent.getIntExtra("victim", -1);
+        mType = intent.getIntExtra(getString(R.string.type_magic), 0);
+        mVictim = intent.getIntExtra(getString(R.string.victim_magic), -1);
 
         AnimalsStorageProvider provider = (AnimalsStorageProvider) getApplication();
         mAnimalsStorage = provider.getAnimalsStorage();
@@ -64,7 +64,6 @@ public class AddAnimalActivity extends AppCompatActivity {
         for (EditText editText : mEditTexts) {
             editText.addTextChangedListener(new TextWatcherImpl());
         }
-
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,12 +88,10 @@ public class AddAnimalActivity extends AppCompatActivity {
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
         }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-
         }
 
         @Override

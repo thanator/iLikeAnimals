@@ -5,6 +5,5 @@ package ru.sberbank.mobile.common.animal;
  */
 
 public interface AnimalsStorageProvider {
-
     AnimalsStorage getAnimalsStorage();
 }

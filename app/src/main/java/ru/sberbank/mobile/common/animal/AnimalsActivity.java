@@ -51,11 +51,11 @@ public class AnimalsActivity extends AppCompatActivity {
         boolean handled = false;
         switch (item.getItemId()) {
             case R.id.add_animal_menu_item: {
-                startActivity(AddAnimalActivity.newIntent(this));
+                startActivity(DoSomeThingWithAnimalActivity.newIntent(this));
                 break;
             }
             case R.id.chosing_one: {
-                DialogFragment newFragment = new AnimalChoosing();
+                DialogFragment newFragment = new AnimalChoosingFragment();
                 Bundle args = new Bundle();
                 args.putInt("count", mAnimalsStorage.getAnimalsCount());
                 newFragment.setArguments(args);

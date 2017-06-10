@@ -16,14 +16,14 @@ import ru.sberbank.backgroundtaskssample.R;
  * Created by Tan-DS on 6/10/2017.
  */
 
-public class ChoosingWhatToDo extends DialogFragment {
+public class ChoosingWhatToDoАFragment extends DialogFragment {
 
     private View mView;
     private int mVictim;
     private RadioButton mRadio1, mRadio2;
 
-    private AnimalsStorage mAnimalsStorage;
 
+    private AnimalsStorage mAnimalsStorage;
 
     @NonNull
     @Override
@@ -34,7 +34,7 @@ public class ChoosingWhatToDo extends DialogFragment {
 
 
         Bundle args = this.getArguments();
-        mVictim = args.getInt("victim");
+        mVictim = args.getInt(getString(R.string.victim_magic));
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -49,18 +49,18 @@ public class ChoosingWhatToDo extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         if (mRadio1.isChecked()){
                             mAnimalsStorage.deleteAnimal(mVictim);
-
                         }else if (mRadio2.isChecked()){
-                            startActivity(AddAnimalActivity.newIntent(getContext()).putExtra("victim", mVictim).putExtra("type", 1));
-                            //mAnimalsStorage.updateAnimal(mVictim);
+                            startActivity(DoSomeThingWithAnimalActivity
+                                    .newIntent(getContext())
+                                    .putExtra(getString(R.string.victim_magic), mVictim)
+                                    .putExtra(getString(R.string.type_magic), 1));
                         }
-
                     }
                 })
                 .setNegativeButton("Nope", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ChoosingWhatToDo.this.getDialog().cancel();
+                        ChoosingWhatToDoАFragment.this.getDialog().cancel();
                     }
                 });
 

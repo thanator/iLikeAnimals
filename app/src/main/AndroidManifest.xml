@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="ru.sberbank.mobile.common.animal.AddAnimalActivity" />
+        <activity android:name="ru.sberbank.mobile.common.animal.DoSomeThingWithAnimalActivity" />
 
 
     </application>

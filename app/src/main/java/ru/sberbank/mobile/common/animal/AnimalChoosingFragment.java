@@ -21,7 +21,7 @@ import ru.sberbank.backgroundtaskssample.R;
  * Created by Tan-DS on 6/10/2017.
  */
 
-public class AnimalChoosing extends DialogFragment {
+public class AnimalChoosingFragment extends DialogFragment {
     private TextView mTextView;
     private Button mButton;
     private EditText mEditText;
@@ -49,28 +49,19 @@ public class AnimalChoosing extends DialogFragment {
         builder.setView(mView);
         if (mCount == 0){
             Toast.makeText(getContext(), "Работать-то не с чем. Создайте сначала животных", Toast.LENGTH_SHORT).show();
-            AnimalChoosing.this.dismiss();
+            AnimalChoosingFragment.this.dismiss();
         }
         builder.setPositiveButton(R.string.oky, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (!mEditText.getText().toString().equals("")){
-            //        if(Integer.parseInt(mEditText.getText().toString()) > 0 && Integer.parseInt(mEditText.getText().toString()) <= mCount ){
 
-                        DialogFragment newFragment = new ChoosingWhatToDo();
+                        DialogFragment newFragment = new ChoosingWhatToDoАFragment();
                         Bundle args = new Bundle();
                         args.putInt("victim",Integer.parseInt(mEditText.getText().toString()));
                         newFragment.setArguments(args);
                         newFragment.show(getFragmentManager(), "Choosing_v2");
 
-          /*          }else{
-                        Toast.makeText(getContext(), "Число должно быть между 0 и " + mCount, Toast.LENGTH_SHORT).show();
-                        DialogFragment newFragment = new AnimalChoosing();
-                        Bundle args = new Bundle();
-                        args.putInt("count",mCount);
-                        newFragment.setArguments(args);
-                        newFragment.show(getFragmentManager(), "Choosing");
-                    }*/
                 }
 
             }
@@ -78,7 +69,7 @@ public class AnimalChoosing extends DialogFragment {
         .setNegativeButton(R.string.nope, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                AnimalChoosing.this.getDialog().cancel();
+                AnimalChoosingFragment.this.getDialog().cancel();
             }
         });
 
