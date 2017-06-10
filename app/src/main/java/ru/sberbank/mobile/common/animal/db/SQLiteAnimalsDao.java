@@ -68,10 +68,8 @@ public class SQLiteAnimalsDao extends SQLiteOpenHelper
             if (cursor != null)
                 cursor.close();
         }
-
         return animal;
     }
-
 
     @Override
     public int deleteAnimal(Animal animal) {
@@ -80,16 +78,12 @@ public class SQLiteAnimalsDao extends SQLiteOpenHelper
         SQLiteDatabase db = getWritableDatabase();
         db.beginTransaction();
         try{
-
             willItEverReturnToSomething = db.delete(TABLE_NAME, AnimalsContract.Animals._ID + " = ?", new String[]{String.valueOf(animal.getId())});
             db.setTransactionSuccessful();
         }finally {
             db.endTransaction();
             db.close();
         }
-
-
-
         return willItEverReturnToSomething;
     }
 

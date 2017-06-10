@@ -1,12 +1,15 @@
 package ru.sberbank.mobile.common.animal;
 
+import android.content.ContentResolver;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -28,6 +31,13 @@ public class AnimalsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ContentResolver resolver = getContentResolver();
+        String androidID = Settings.Secure.getString(resolver, Settings.Secure.ANDROID_ID);
+        Log.e("This: ", androidID );
+
+
+
         AnimalsStorageProvider provider = (AnimalsStorageProvider) getApplication();
         mAnimalsStorage = provider.getAnimalsStorage();
 
