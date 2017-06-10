@@ -67,6 +67,7 @@ public class AnimalsAdapter extends BaseAdapter {
         holder.speciesTextView.setText(composeString(context, R.string.species, animal.getSpecies()));
         holder.ageTextView.setText(composeString(context, R.string.age, String.valueOf(animal.getAge())));
         holder.nameTextView.setText(composeString(context, R.string.name, animal.getName()));
+        holder.numberTextView.setText(composeString(context, R.string.number_of_animal_dop, String.valueOf(animal.getId())));
     }
 
     private static String composeString(Context context, int propertyResId, String propertyValue) {
@@ -80,11 +81,13 @@ public class AnimalsAdapter extends BaseAdapter {
         public final TextView speciesTextView;
         public final TextView ageTextView;
         public final TextView nameTextView;
+        public final TextView numberTextView;
 
         public ViewHolder(View itemView) {
             speciesTextView = (TextView) itemView.findViewById(R.id.species_text_view);
             ageTextView = (TextView) itemView.findViewById(R.id.age_text_view);
             nameTextView = (TextView) itemView.findViewById(R.id.name_text_view);
+            numberTextView = (TextView) itemView.findViewById(R.id.number);
         }
     }
 }

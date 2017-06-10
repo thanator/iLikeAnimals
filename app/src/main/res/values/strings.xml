@@ -11,4 +11,5 @@
     <string name="okey">Okey</string>
     <string name="nope">Cancel</string>
     <string name="chosing_one_menu">Выбрать подопытного</string>
+    <string name="number_of_animal_dop">№</string>
 </resources>
