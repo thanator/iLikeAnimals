@@ -43,7 +43,7 @@ public class AnimalChoosing extends DialogFragment {
         mTextView = (TextView) mView.findViewById(R.id.choosing_one_text);
         mEditText = (EditText) mView.findViewById(R.id.choosing_one_edit);
 
-        mEditText.setHint("0 - " + mCount);
+     //   mEditText.setHint("0 - " + mCount);
         mTextView.setText("Вам доступно " + mCount + " подопытных");
 
         builder.setView(mView);
@@ -55,7 +55,7 @@ public class AnimalChoosing extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (!mEditText.getText().toString().equals("")){
-                    if(Integer.parseInt(mEditText.getText().toString()) > 0 && Integer.parseInt(mEditText.getText().toString()) <= mCount ){
+            //        if(Integer.parseInt(mEditText.getText().toString()) > 0 && Integer.parseInt(mEditText.getText().toString()) <= mCount ){
 
                         DialogFragment newFragment = new ChoosingWhatToDo();
                         Bundle args = new Bundle();
@@ -63,14 +63,14 @@ public class AnimalChoosing extends DialogFragment {
                         newFragment.setArguments(args);
                         newFragment.show(getFragmentManager(), "Choosing_v2");
 
-                    }else{
+          /*          }else{
                         Toast.makeText(getContext(), "Число должно быть между 0 и " + mCount, Toast.LENGTH_SHORT).show();
                         DialogFragment newFragment = new AnimalChoosing();
                         Bundle args = new Bundle();
                         args.putInt("count",mCount);
                         newFragment.setArguments(args);
                         newFragment.show(getFragmentManager(), "Choosing");
-                    }
+                    }*/
                 }
 
             }
