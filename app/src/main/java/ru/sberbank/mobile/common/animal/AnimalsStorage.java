@@ -38,6 +38,24 @@ public class AnimalsStorage {
         return mAnimalsDao.getAnimals();
     }
 
+    public void deleteAnimal(long id){
+        Animal animal = mAnimalsDao.getAnimalById(id);
+        mAnimalsDao.deleteAnimal(animal);
+        for (OnContentChangeListener listener : mOnContentChangeListeners) {
+            listener.onAnimalAdded(this, animal);
+        }
+    }
+
+
+    public void updateAnimal(long id){
+        Animal animal = mAnimalsDao.getAnimalById(id);
+        mAnimalsDao.updateAnimal(animal);
+        for (OnContentChangeListener listener : mOnContentChangeListeners) {
+            listener.onAnimalAdded(this, animal);
+        }
+    }
+
+
     public void addAnimal(Animal animal) {
         mAnimalsDao.insertAnimal(animal);
         for (OnContentChangeListener listener : mOnContentChangeListeners) {

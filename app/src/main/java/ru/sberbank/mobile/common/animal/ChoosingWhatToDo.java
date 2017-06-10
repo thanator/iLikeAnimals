@@ -22,10 +22,15 @@ public class ChoosingWhatToDo extends DialogFragment {
     private int mVictim;
     private RadioButton mRadio1, mRadio2;
 
+    private AnimalsStorage mAnimalsStorage;
+
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        AnimalsStorageProvider provider = (AnimalsStorageProvider)getActivity().getApplication();
+        mAnimalsStorage = provider.getAnimalsStorage();
 
 
         Bundle args = this.getArguments();
@@ -43,9 +48,10 @@ public class ChoosingWhatToDo extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (mRadio1.isChecked()){
+                            mAnimalsStorage.deleteAnimal(mVictim);
 
                         }else if (mRadio2.isChecked()){
-
+                            mAnimalsStorage.updateAnimal(mVictim);
                         }
 
                     }
