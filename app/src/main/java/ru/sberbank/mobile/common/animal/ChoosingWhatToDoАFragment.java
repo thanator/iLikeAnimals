@@ -12,6 +12,9 @@ import android.widget.RadioButton;
 
 import ru.sberbank.backgroundtaskssample.R;
 
+import static ru.sberbank.mobile.common.animal.VeryGlobalVariables.TYPE;
+import static ru.sberbank.mobile.common.animal.VeryGlobalVariables.VICTIM;
+
 /**
  * Created by Tan-DS on 6/10/2017.
  */
@@ -34,7 +37,7 @@ public class ChoosingWhatToDoАFragment extends DialogFragment {
 
 
         Bundle args = this.getArguments();
-        mVictim = args.getInt(getString(R.string.victim_magic));
+        mVictim = args.getInt(VICTIM);
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -52,8 +55,8 @@ public class ChoosingWhatToDoАFragment extends DialogFragment {
                         }else if (mRadio2.isChecked()){
                             startActivity(DoSomeThingWithAnimalActivity
                                     .newIntent(getContext())
-                                    .putExtra(getString(R.string.victim_magic), mVictim)
-                                    .putExtra(getString(R.string.type_magic), 1));
+                                    .putExtra(VICTIM, mVictim)
+                                    .putExtra(TYPE, 1));
                         }
                     }
                 })

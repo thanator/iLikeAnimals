@@ -16,11 +16,14 @@ import android.widget.EditText;
 
 import ru.sberbank.backgroundtaskssample.R;
 
+import static ru.sberbank.mobile.common.animal.VeryGlobalVariables.TYPE;
+import static ru.sberbank.mobile.common.animal.VeryGlobalVariables.VICTIM;
+
 /**
  * @author not QuickNick.
  */
 
-public class DoSomeThingWithAnimalActivity extends AppCompatActivity {
+public class DoSomeThingWithAnimalActivity extends AppCompatActivity{
 
     private AnimalsStorage mAnimalsStorage;
 
@@ -45,8 +48,8 @@ public class DoSomeThingWithAnimalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        mType = intent.getIntExtra(getString(R.string.type_magic), 0);
-        mVictim = intent.getIntExtra(getString(R.string.victim_magic), -1);
+        mType = intent.getIntExtra(TYPE, 0);
+        mVictim = intent.getIntExtra(VICTIM, -1);
 
         AnimalsStorageProvider provider = (AnimalsStorageProvider) getApplication();
         mAnimalsStorage = provider.getAnimalsStorage();

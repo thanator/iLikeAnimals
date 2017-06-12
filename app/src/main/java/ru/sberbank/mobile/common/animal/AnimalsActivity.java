@@ -34,9 +34,6 @@ public class AnimalsActivity extends AppCompatActivity {
 
         ContentResolver resolver = getContentResolver();
         String androidID = Settings.Secure.getString(resolver, Settings.Secure.ANDROID_ID);
-        Log.e("This: ", androidID );
-
-
 
         AnimalsStorageProvider provider = (AnimalsStorageProvider) getApplication();
         mAnimalsStorage = provider.getAnimalsStorage();

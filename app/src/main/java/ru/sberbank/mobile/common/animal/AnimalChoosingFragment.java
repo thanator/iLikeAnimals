@@ -43,7 +43,6 @@ public class AnimalChoosingFragment extends DialogFragment {
         mTextView = (TextView) mView.findViewById(R.id.choosing_one_text);
         mEditText = (EditText) mView.findViewById(R.id.choosing_one_edit);
 
-     //   mEditText.setHint("0 - " + mCount);
         mTextView.setText("Вам доступно " + mCount + " подопытных");
 
         builder.setView(mView);
@@ -72,9 +71,6 @@ public class AnimalChoosingFragment extends DialogFragment {
                 AnimalChoosingFragment.this.getDialog().cancel();
             }
         });
-
-
-
 
         return builder.create();
     }
