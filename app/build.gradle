@@ -42,4 +42,14 @@ dependencies {
     compile "com.android.support:design:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
     compile "com.android.support:percent:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
     compile "com.android.support:palette-v7:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
+
+
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    testCompile "org.mockito:mockito-core:2.8.47"
+    androidTestCompile "org.mockito:mockito-android:2.8.47"
 }

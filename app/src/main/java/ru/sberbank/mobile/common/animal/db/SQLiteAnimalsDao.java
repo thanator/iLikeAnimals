@@ -3,7 +3,6 @@ package ru.sberbank.mobile.common.animal.db;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -24,7 +23,7 @@ public class SQLiteAnimalsDao extends SQLiteOpenHelper
 
     private static final String NAME = "animals.db";
     private static final long NO_ID = -1;
-    private static final int CURRENT_VERSION = 1;
+    public static final int CURRENT_VERSION = 1;
 
     public static final String TABLE_NAME = "animals";
 
