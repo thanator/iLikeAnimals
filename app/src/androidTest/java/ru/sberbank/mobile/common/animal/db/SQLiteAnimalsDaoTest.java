@@ -37,22 +37,22 @@ public class SQLiteAnimalsDaoTest {
 
     @Before
     public void before() {
-
         Log.e(TAG, "before");
     }
 
     @Test
     public void testDeleteAnimal(){
+        Log.e(TAG, "method name = " + mTestNameRule.getMethodName());
         Animal animal = EntitiesGenerator.createRandomAnimal(false);
         long id = mDaoRule.getSqliteAnimalsDao().insertAnimal(animal);
         animal.setId(id);
         mDaoRule.getSqliteAnimalsDao().deleteAnimal(animal);
         assertThat(true, is (mDaoRule.getSqliteAnimalsDao().getAnimals().size() == 0));
-
     }
 
     @Test
     public void testUpdateAnimal(){
+        Log.e(TAG, "method name = " + mTestNameRule.getMethodName());
         Animal animalOld = EntitiesGenerator.createRandomAnimal(false);
         Animal animalNew = EntitiesGenerator.createRandomAnimal(false);
         long id_one = mDaoRule.getSqliteAnimalsDao().insertAnimal(animalOld);
