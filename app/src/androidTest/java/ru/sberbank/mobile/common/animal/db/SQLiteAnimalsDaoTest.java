@@ -42,6 +42,30 @@ public class SQLiteAnimalsDaoTest {
     }
 
     @Test
+    public void testDeleteAnimal(){
+        Animal animal = EntitiesGenerator.createRandomAnimal(false);
+        long id = mDaoRule.getSqliteAnimalsDao().insertAnimal(animal);
+        animal.setId(id);
+        mDaoRule.getSqliteAnimalsDao().deleteAnimal(animal);
+        assertThat(true, is (mDaoRule.getSqliteAnimalsDao().getAnimals().size() == 0));
+
+    }
+
+    @Test
+    public void testUpdateAnimal(){
+        Animal animalOld = EntitiesGenerator.createRandomAnimal(false);
+        Animal animalNew = EntitiesGenerator.createRandomAnimal(false);
+        long id_one = mDaoRule.getSqliteAnimalsDao().insertAnimal(animalOld);
+        animalOld.setId(id_one);
+        animalNew.setId(id_one);
+        mDaoRule.getSqliteAnimalsDao().updateAnimal(animalOld, animalNew);
+        animalOld.setName(mDaoRule.getSqliteAnimalsDao().getAnimalById(id_one).getName());
+        animalOld.setAge(mDaoRule.getSqliteAnimalsDao().getAnimalById(id_one).getAge());
+        animalOld.setSpecies(mDaoRule.getSqliteAnimalsDao().getAnimalById(id_one).getSpecies());
+        assertThat(animalNew, is(animalOld));
+    }
+
+    @Test
     public void testInsertAnimal() {
         Log.e(TAG, "method name = " + mTestNameRule.getMethodName());
         Animal animal = EntitiesGenerator.createRandomAnimal(false);
@@ -67,6 +91,7 @@ public class SQLiteAnimalsDaoTest {
         Animal expected = EntitiesGenerator.createRandomAnimal(false);
 
         long id = mDaoRule.getSqliteAnimalsDao().insertAnimal(expected);
+        expected.setId(id);
         Animal actual = mDaoRule.getSqliteAnimalsDao().getAnimalById(id);
         assertThat(actual, is(expected));
     }

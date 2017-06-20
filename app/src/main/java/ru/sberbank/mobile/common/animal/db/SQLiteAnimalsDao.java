@@ -132,7 +132,8 @@ public class SQLiteAnimalsDao extends SQLiteOpenHelper
         db.beginTransaction();
         try {
             ContentValues values = createValuesFromAnimal(newAnimal);
-            willItEverReturnToSomething = db.update(TABLE_NAME, values, AnimalsContract.Animals._ID + " = ?", new String[]{String.valueOf(animal.getId())});
+            willItEverReturnToSomething = db.update(TABLE_NAME, values,
+                    AnimalsContract.Animals._ID + " = ?", new String[]{String.valueOf(animal.getId())});
             db.setTransactionSuccessful();
         }finally {
             db.endTransaction();
