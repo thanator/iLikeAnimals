@@ -45,7 +45,21 @@ public class AnimalsStorageTest {
 
     @Test
     public void getAnimalsCount() throws Exception {
+        List<Animal> animals = EntitiesGenerator.createRandomAnimalsList(true);
+        Mockito.when(animalsDaoMock.getAnimals()).thenReturn(animals);
+        int getCountFromStorage = mAnimalsStorage.getAnimalsCount();
+        Mockito.verify(animalsDaoMock, Mockito.times(1)).getAnimals();
+        assertThat(animals.size(), is(getCountFromStorage));
 
+    }
+
+    @Test
+    public void getAnimals() throws Exception {
+        List<Animal> animals = EntitiesGenerator.createRandomAnimalsList(true);
+        Mockito.when(animalsDaoMock.getAnimals()).thenReturn(animals);
+        List <Animal> animalsReal = mAnimalsStorage.getAnimals();
+        Mockito.verify(animalsDaoMock, Mockito.times(1)).getAnimals();
+        assertThat(animalsReal, is(animals));
     }
 
     @Test
@@ -59,18 +73,15 @@ public class AnimalsStorageTest {
 
     @Test
     public void updateAnimal() throws Exception {
+        Animal oldAnimal = EntitiesGenerator.createRandomAnimal(true);
+        Animal newAnimal = EntitiesGenerator.createRandomAnimal(true);
+        Mockito.when(animalsDaoMock.getAnimalById(1)).thenReturn(oldAnimal);
+        mAnimalsStorage.updateAnimal(1, newAnimal);
+        Mockito.verify(animalsDaoMock, Mockito.times(1)).updateAnimal(oldAnimal, newAnimal);
+        Mockito.verify(mChangeListner, Mockito.times(1)).onAnimalAdded(oldAnimal);
     }
 
-    @Test
-    public void getAnimals() throws Exception {
-        List<Animal> animals = EntitiesGenerator.createRandomAnimalsList(true);
-        Mockito.when(animalsDaoMock.getAnimals()).thenReturn(animals);
-        List <Animal> animalsReal = mAnimalsStorage.getAnimals();
-        Mockito.verify(animalsDaoMock, Mockito.times(1)).getAnimals();
-        assertThat(animalsReal, is(animals));
-    }
-
-    @Test
+   @Test
     public void addAnimal() throws Exception {
         Animal animal = EntitiesGenerator.createRandomAnimal(true);
         mAnimalsStorage.addAnimal(animal);
