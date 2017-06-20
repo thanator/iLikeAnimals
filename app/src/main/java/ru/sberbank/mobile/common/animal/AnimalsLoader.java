@@ -49,9 +49,10 @@ public class AnimalsLoader extends AsyncTaskLoader<List<Animal>> implements Anim
 
     // AnimalsStorage.OnContentChangeListener >>>
 
+
     @Override
-    public void onAnimalAdded(AnimalsStorage sender, Animal animal) {
-        onContentChanged();
+    public void onAnimalAdded(Animal animal) {
+
     }
 
     // <<< AnimalsStorage.OnContentChangeListener

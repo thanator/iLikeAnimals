@@ -1,16 +1,6 @@
 package ru.sberbank.mobile.common.animal;
 
-import android.content.Context;
-import android.util.Log;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import ru.sberbank.mobile.common.animal.db.AnimalsDao;
@@ -35,6 +25,7 @@ public class AnimalsStorage {
     }
 
     public List<Animal> getAnimals() {
+
         return mAnimalsDao.getAnimals();
     }
 
@@ -42,7 +33,7 @@ public class AnimalsStorage {
         Animal animal = mAnimalsDao.getAnimalById(id);
         mAnimalsDao.deleteAnimal(animal);
         for (OnContentChangeListener listener : mOnContentChangeListeners) {
-            listener.onAnimalAdded(this, animal);
+            listener.onAnimalAdded(animal);
         }
     }
 
@@ -51,7 +42,7 @@ public class AnimalsStorage {
         Animal animal = mAnimalsDao.getAnimalById(id);
         mAnimalsDao.updateAnimal(animal, newAnimal);
         for (OnContentChangeListener listener : mOnContentChangeListeners) {
-            listener.onAnimalAdded(this, animal);
+            listener.onAnimalAdded(animal);
         }
     }
 
@@ -59,7 +50,7 @@ public class AnimalsStorage {
     public void addAnimal(Animal animal) {
         mAnimalsDao.insertAnimal(animal);
         for (OnContentChangeListener listener : mOnContentChangeListeners) {
-            listener.onAnimalAdded(this, animal);
+            listener.onAnimalAdded(animal);
         }
     }
 
@@ -73,6 +64,6 @@ public class AnimalsStorage {
 
     public interface OnContentChangeListener {
 
-        void onAnimalAdded(AnimalsStorage sender, Animal animal);
+        void onAnimalAdded(Animal animal);
     }
 }
